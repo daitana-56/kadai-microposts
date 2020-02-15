@@ -10,4 +10,7 @@ class User < ApplicationRecord
   
   #パスワード用の設定
   has_secure_password
+  
+  #参照
+  has_many :microposts
 end

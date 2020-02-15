@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.order(id: :desc).page(params[:id])
+    counts(@user)
   end
 
   def new
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
   
   private
   
+  #strong parameters
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end

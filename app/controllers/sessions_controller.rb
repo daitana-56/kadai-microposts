@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
   
   private
   
+  #ログイン処理
   def login(email, password)
     @user = User.find_by(email: email)
     
