@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   
   #userのルーティング
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show, :new, :create] do
+    member do
+      get :followings
+      get :followers
+    end
+  end
   
   #sessionのルーティング
   get 'login', to: 'sessions#new'
@@ -13,4 +18,7 @@ Rails.application.routes.draw do
   
   #micropostのルーティング
   resources :microposts, only: [:create, :destroy]
+  
+  #relationshipのルーティング
+  resources :relationships, only: [:create, :destroy]
 end
