@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       get :followings
       get :followers
+      get :likes
     end
   end
   
@@ -21,4 +22,7 @@ Rails.application.routes.draw do
   
   #relationshipのルーティング
   resources :relationships, only: [:create, :destroy]
+  
+  #favoriteのルーティング
+  resources :favorites, only: [:create, :destroy]
 end

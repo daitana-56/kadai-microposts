@@ -10,10 +10,12 @@
         <div>
           <%= micropost.content %>
         </div>
-        <div>
+        <div>favorite_user : <span class="badge badge-info"><%= micropost.favoriteuser.count %></span></div>
+        <div class="btn-group">
           <% if current_user == micropost.user %>
-            <%= link_to 'Delete', micropost, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'You sure? '} %>
+            <%= link_to 'Delete', micropost, method: :delete, class: 'btn btn-danger btn-sm mr-1 rounded', data: { confirm: 'You sure? '} %>
           <% end %>
+          <%= render 'favorites/favorite_button', micropost: micropost %>
         </div>
       </div>
     </li>
